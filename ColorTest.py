@@ -35,7 +35,7 @@ class ColorTest(unittest.TestCase):
         b = Color("B")
         v = Color("V")
 
-        self.assertTrue(b != v)
+        self.assertNotEqual(b, v)
 
 if __name__ == "__main__":
     unittest.main()

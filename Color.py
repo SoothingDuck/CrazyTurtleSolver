@@ -4,6 +4,12 @@ class ColorException(Exception):
 
 class Color:
     def __init__(self, letter):
+        """Initialisation
+        R == Rouge
+        V == Vert
+        J == Jaune
+        B == Bleu
+        """
         if letter == "R":
             self.color = "Rouge"
         elif letter == "V":
