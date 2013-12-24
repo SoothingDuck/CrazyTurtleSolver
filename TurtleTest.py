@@ -58,5 +58,18 @@ class TurtleTest(unittest.TestCase):
         t = Turtle("CJ")
         self.assertEqual(str(t), "Corps Jaune")
 
+    def test_matching(self):
+
+        t1 = Turtle("TV")
+        t2 = Turtle("CV")
+        t3 = Turtle("CB")
+        t4 = Turtle("TV")
+
+        self.assertTrue(t1.matches(t2))
+        self.assertFalse(t1.matches(t3))
+        self.assertFalse(t1.matches(t4))
+        
+        
+
 if __name__ == "__main__":
     unittest.main()

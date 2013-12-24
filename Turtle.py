@@ -44,3 +44,10 @@ class Turtle:
                 return "%s Verte" % (self.part)
             else:
                 return "%s %s" % (self.part, self.color)
+
+    def matches(self, other):
+        """Test si une tortue peut s'emboiter avec une autre"""
+        if self.color != other.color:
+            return False
+        else:
+            return (self.part != other.part)
