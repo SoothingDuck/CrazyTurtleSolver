@@ -16,5 +16,14 @@ class Color:
             raise ColorException
 
     def __str__(self):
+        """Affichage de la color"""
         return self.color
 
+    def __eq__(self, other):
+        """Surcharge de =="""
+        return self.color == other.color
+
+    def __ne__(self, other):
+        """Surcharge de !="""
+        return self.color != other.color
+        
