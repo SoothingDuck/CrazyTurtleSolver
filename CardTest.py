@@ -73,6 +73,13 @@ class CardTest(unittest.TestCase):
     def test_equality(self):
         self.assertEqual(self.c3, self.c4)
 
+
+    def test_copy(self):
+
+        c5 = self.c1.copy()
+
+        self.assertEqual(self.c1, c5)
+
     def test_str(self):
         
         self.assertEqual(

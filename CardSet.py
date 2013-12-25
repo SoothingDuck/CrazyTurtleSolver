@@ -29,7 +29,6 @@ class CardSet(list):
     def __str__(self):
         return "".join([str(x) for x in self])
 
-
     def delete_card(self, card):
         
         seq = list(self)

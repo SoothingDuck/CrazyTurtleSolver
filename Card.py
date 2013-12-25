@@ -27,6 +27,10 @@ class Card:
         self.turtle_south = Turtle(card_string[4:6])
         self.turtle_west = Turtle(card_string[6:8])
 
+    def copy(self):
+        """Cree une copie de la carte"""
+        return Card(self.card_string)
+
     def matches_west(self, other):
         """Test si la tortue a l'ouest de la carte
         matche avec la tortue a l'est de l'autre carte
