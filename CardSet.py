@@ -28,3 +28,17 @@ class CardSet(list):
 
     def __str__(self):
         return "".join([str(x) for x in self])
+
+
+    def delete_card(self, card):
+        
+        seq = list(self)
+
+        tmp = card
+        for _ in range(4):
+            tmp = tmp.rotate_right()
+            for i, t in enumerate(seq):
+                if t == tmp:
+                    del self[i]
+                    return None
+            

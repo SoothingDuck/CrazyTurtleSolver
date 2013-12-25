@@ -9,7 +9,6 @@ class CardSetTest(unittest.TestCase):
         self.a.init_crazy_turle_cardset()
 
     def test_init(self):
-        
 
         self.assertTrue(Card("TVCRTJTB") in self.a)
         self.assertTrue(Card("CBCVTBTR") in self.a)
@@ -26,6 +25,18 @@ class CardSetTest(unittest.TestCase):
         self.assertEqual(len(self.a), 9)
 
         card = self.a.pop()
+
+        self.assertEqual(len(self.a), 8)
+
+        self.assertTrue(not card in self.a)
+
+    def test_del(self):
+
+        card = Card("TVCRTJTB")
+
+        self.assertTrue(card in self.a)
+
+        self.a.delete_card(card)
 
         self.assertEqual(len(self.a), 8)
 
