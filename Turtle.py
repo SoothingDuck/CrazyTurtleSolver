@@ -32,18 +32,10 @@ class Turtle:
     def __str__(self):
         """Affichage des caracteristiques de la tortue
         Exemples :
-        Tete Bleue
-        Corps Jaune
+        TB
+        CJ
         """
-        if self.part == TurtlePart.TurtlePart("C"):
-            return "%s %s" % (self.part, self.color)
-        else:
-            if self.color == Color.Color("B"):
-                return "%s Bleue" % (self.part)
-            elif self.color == Color.Color("V"):
-                return "%s Verte" % (self.part)
-            else:
-                return "%s %s" % (self.part, self.color)
+        return "%s%s" % (self.part, self.color)
 
     def matches(self, other):
         """Test si une tortue peut s'emboiter avec une autre"""

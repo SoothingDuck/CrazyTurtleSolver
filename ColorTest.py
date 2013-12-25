@@ -8,19 +8,19 @@ class ColorTest(unittest.TestCase):
 
     def test_red(self):
         c = Color("R")
-        self.assertEqual(str(c), "Rouge")
+        self.assertEqual(str(c), "R")
 
     def test_blue(self):
         c = Color("B")
-        self.assertEqual(str(c), "Bleu")
+        self.assertEqual(str(c), "B")
 
     def test_yellow(self):
         c = Color("J")
-        self.assertEqual(str(c), "Jaune")
+        self.assertEqual(str(c), "J")
 
     def test_green(self):
         c = Color("V")
-        self.assertEqual(str(c), "Vert")
+        self.assertEqual(str(c), "V")
 
     def test_wrong(self):
          self.assertRaises(ColorException, Color, "Y")

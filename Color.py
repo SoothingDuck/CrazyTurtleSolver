@@ -11,13 +11,13 @@ class Color:
         B == Bleu
         """
         if letter == "R":
-            self.color = "Rouge"
+            self.color = "R"
         elif letter == "V":
-            self.color = "Vert"
+            self.color = "V"
         elif letter == "J":
-            self.color = "Jaune"
+            self.color = "J"
         elif letter == "B":
-            self.color = "Bleu"
+            self.color = "B"
         else:
             raise ColorException
 

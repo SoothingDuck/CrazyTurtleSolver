@@ -5,11 +5,11 @@ class TurtlePartTest(unittest.TestCase):
 
     def test_head(self):
         t = TurtlePart("T")
-        self.assertEqual(str(t), "Tete")
+        self.assertEqual(str(t), "T")
 
     def test_body(self):
         t = TurtlePart("C")
-        self.assertEqual(str(t), "Corps")
+        self.assertEqual(str(t), "C")
 
     def test_wrong(self):
         self.assertRaises(TurtlePartException, TurtlePart, "A")

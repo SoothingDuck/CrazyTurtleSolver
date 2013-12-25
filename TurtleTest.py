@@ -50,13 +50,13 @@ class TurtleTest(unittest.TestCase):
     def test_string(self):
 
         t = Turtle("TV")
-        self.assertEqual(str(t), "Tete Verte")
+        self.assertEqual(str(t), "TV")
 
         t = Turtle("TB")
-        self.assertEqual(str(t), "Tete Bleue")
+        self.assertEqual(str(t), "TB")
 
         t = Turtle("CJ")
-        self.assertEqual(str(t), "Corps Jaune")
+        self.assertEqual(str(t), "CJ")
 
     def test_matching(self):
 

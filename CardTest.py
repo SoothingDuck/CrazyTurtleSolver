@@ -73,5 +73,21 @@ class CardTest(unittest.TestCase):
     def test_equality(self):
         self.assertEqual(self.c3, self.c4)
 
+    def test_str(self):
+        
+        self.assertEqual(
+            str(self.c1),
+            """
+**************
+*     CR     *
+* TJ      CV *
+*     TV     *
+**************
+"""
+            )
+
+
+        
+
 if __name__ == "__main__":
     unittest.main()

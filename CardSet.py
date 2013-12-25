@@ -26,3 +26,5 @@ class CardSet(list):
         self.append(Card("TJCJCRTB"))
         self.append(Card("CVCBTVCB"))
 
+    def __str__(self):
+        return "".join([str(x) for x in self])

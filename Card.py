@@ -69,5 +69,11 @@ class Card:
                 self.turtle_south == other.turtle_south and
                 self.turtle_west == other.turtle_west)
 
-
-
+    def __str__(self):
+        return """
+**************
+*     %s     *
+* %s      %s *
+*     %s     *
+**************
+""" % (str(self.turtle_north), str(self.turtle_west), str(self.turtle_east), str(self.turtle_south))

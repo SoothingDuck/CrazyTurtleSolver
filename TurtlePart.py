@@ -10,9 +10,9 @@ class TurtlePart:
         C == Corps
         """
         if part_name == "T":
-            self.part_name = "Tete"
+            self.part_name = "T"
         elif part_name == "C":
-            self.part_name = "Corps"
+            self.part_name = "C"
         else:
             raise TurtlePartException
 
