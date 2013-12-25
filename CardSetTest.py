@@ -21,7 +21,15 @@ class CardSetTest(unittest.TestCase):
         self.assertTrue(Card("CRTBTJCJ") in self.a)
         self.assertTrue(Card("TVCBCVCB") in self.a)
 
-    
+    def test_taille(self):
+        
+        self.assertEqual(len(self.a), 9)
+
+        card = self.a.pop()
+
+        self.assertEqual(len(self.a), 8)
+
+        self.assertTrue(not card in self.a)
 
 if __name__ == "__main__":
     unittest.main()
