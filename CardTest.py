@@ -71,7 +71,7 @@ class CardTest(unittest.TestCase):
         self.assertFalse(self.c1.matches_south(self.c3))
 
     def test_equality(self):
-        raise
+        self.assertEqual(self.c3, self.c4)
 
 if __name__ == "__main__":
     unittest.main()
