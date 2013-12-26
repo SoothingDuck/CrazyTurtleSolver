@@ -7,6 +7,14 @@ class Place:
         self.y = y
         self.card = None
 
+
+    def copy(self, other_grid):
+        p = Place(other_grid, self.x, self.y)
+        if not self.card is None:
+            p.card = self.card.copy()
+
+        return p
+
     def set_card(self, card):
         self.card = card
 

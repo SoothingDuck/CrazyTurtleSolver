@@ -13,6 +13,22 @@ class GridTest(unittest.TestCase):
         self.assertRaises(GridCardNotFound, self.grid.set_card, Card("TJTBTVCJ"), 1, 1)
 
 
+    def test_copy(self):
+
+        self.grid.set_card(Card("TBTVCRTJ"), 1, 1)
+        self.grid.set_card(Card("CBTJCRTJ"), 0, 0)
+
+        other_grid = self.grid.copy()
+
+        self.assertNotEqual(self.grid, other_grid)
+        self.assertEquals(self.grid.cardset, other_grid.cardset)
+
+        for i in range(3):
+            for j in range(3):
+                self.assertEquals(self.grid.matrix[i][j], other_grid.matrix[i][j])
+                raise
+
+
     def test_configuration(self):
         
         self.grid.set_card(Card("TBTVCRTJ"), 1, 1)

@@ -12,6 +12,21 @@ class Grid:
 
         self.matrix = []
 
+
+    def copy(self):
+        """Copie de la grille actuelle"""
+        g = Grid()
+        g.cardset = self.cardset.copy()
+        
+        for i in range(3):
+            g.matrix.append([None, None, None])
+
+        for i in range(3):
+            for j in range(3):
+                g.matrix[i][j] = self.matrix[i][j].copy(g)
+
+        return g
+
     def init_crazy_turtle_game(self):
         
         self.cardset.init_crazy_turle_cardset()

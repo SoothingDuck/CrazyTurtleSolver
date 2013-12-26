@@ -26,6 +26,14 @@ class CardSet(list):
         self.append(Card("TJCJCRTB"))
         self.append(Card("CVCBTVCB"))
 
+    def copy(self):
+        
+        p = CardSet()
+        for x in self:
+            p.append(x)
+
+        return p
+
     def __str__(self):
         return "".join([str(x) for x in self])
 
