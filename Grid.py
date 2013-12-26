@@ -2,6 +2,9 @@
 from CardSet import CardSet
 from Place import Place
 
+class GridCardNotFound(Exception):
+    pass
+
 class Grid:
     
     def __init__(self):
@@ -25,14 +28,19 @@ class Grid:
         return len(self.cardset)
 
 
-    def set_card(self, num_card, x, y):
+    def set_card(self, card, x, y):
         place = self.matrix[x][y]
 
-        card = self.cardset[num_card]
+        if card not in self.cardset:
+            raise GridCardNotFound
         
         self.cardset.delete_card(card)
 
         place.set_card(card)
+
+
+    def get_card(self, x, y):
+        return self.matrix[x][y].get_card()
 
     def get_new_places_for_cards(self):
 

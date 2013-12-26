@@ -9,13 +9,27 @@ class GridTest(unittest.TestCase):
         self.grid = Grid()
         self.grid.init_crazy_turtle_game()
 
+    def test_exception_grid_card(self):
+        self.assertRaises(GridCardNotFound, self.grid.set_card, Card("TJTBTVCJ"), 1, 1)
+
+
+    def test_configuration(self):
+        
+        self.grid.set_card(Card("TBTVCRTJ"), 1, 1)
+        self.grid.set_card(Card("CBTJCRTJ"), 0, 0)
+
+        self.assertEqual(self.grid.number_of_cards_left(), 7)
+
+        a = self.grid.matrix[0][1].get_possible_card_configuration()
+        self.assertEqual(a[0], Card("TRCJCRTV"))
+
     def test_init(self):
 
         self.assertTrue(isinstance(self.grid, Grid))
 
         self.assertEqual(self.grid.number_of_cards_left(), 9)
 
-        self.grid.set_card(0,1,1)
+        self.grid.set_card(Card("TJTBTVCR"),1,1)
 
         self.assertEqual(self.grid.number_of_cards_left(), 8)
 
@@ -24,8 +38,6 @@ class GridTest(unittest.TestCase):
         self.assertEqual(len(new_places), 4)
 
         place = new_places[0]
-
-        print place
 
         self.assertTrue(isinstance(place, Place))
 

@@ -13,6 +13,8 @@ class Place:
     def has_card(self):
         return self.card != None
 
+    def get_card(self):
+        return self.card
 
     def has_adjacent_card(self):
 
@@ -37,11 +39,23 @@ class Place:
 
     def is_possible_card(self, card):
 
-        if self.x > 0 and self.grid[self.x - 1][y].has_card():
-            if not card.matches_west(self.grid[self.x - 1][y].card):
+        if self.x > 0 and self.grid.matrix[self.x - 1][self.y].has_card():
+            if not card.matches_west(self.grid.matrix[self.x - 1][self.y].card):
                 return False
 
-        raise
+        if self.x < 2 and self.grid.matrix[self.x + 1][self.y].has_card():
+            if not card.matches_east(self.grid.matrix[self.x + 1][self.y].card):
+                return False
+
+        if self.y > 0 and self.grid.matrix[self.x][self.y - 1].has_card():
+            if not card.matches_north(self.grid.matrix[self.x][self.y - 1].card):
+                return False
+
+        if self.y < 2 and self.grid.matrix[self.x][self.y + 1].has_card():
+            if not card.matches_south(self.grid.matrix[self.x][self.y + 1].card):
+                return False
+
+        return True
 
 
     def get_possible_card_configuration(self):
@@ -49,12 +63,12 @@ class Place:
         result = []
 
         for card in self.grid.cardset:
+            tmp = card.copy()
             for _ in range(4):
-                tmp = card.rotate_right()
+                tmp = tmp.rotate_right()
                 
                 if self.is_possible_card(tmp):
                     result.append(tmp.copy())
-
 
         return result
                 
