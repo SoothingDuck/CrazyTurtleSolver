@@ -31,7 +31,10 @@ class Color:
         """Surcharge de =="""
         return self.color == other.color
 
-
     def copy(self):
         """Retourne une copie de la couleur"""
         return Color(self.letter)
+
+    def matches(self, other):
+        """Regarde si 2 couleurs matchent"""
+        return self.equals(other)

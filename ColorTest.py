@@ -38,5 +38,11 @@ class ColorTest(unittest.TestCase):
 
         self.assertTrue(not b.equals(v))
 
+    def test_matches(self):
+        b1 = Color("B")
+        b2 = Color("B")
+
+        self.assertTrue(b1.matches(b2))
+
 if __name__ == "__main__":
     unittest.main()
