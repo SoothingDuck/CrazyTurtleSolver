@@ -99,12 +99,34 @@ class Place:
 class GridCardNotFound(Exception):
     pass
 
+class GridCardAlreadyInCardSet(Exception):
+    pass
+
 class Grid:
     
     def __init__(self):
         self.cardset = CardSet()
 
         self.matrix = []
+
+    def equals(self, other):
+        """Teste l'egalite entre 2 grilles"""
+        if not self.cardset.equals(other.cardset):
+            return False
+
+        for i in range(3):
+            for j in range(3):
+                if not self.matrix[i][j].equals(other.matrix[i][j]):
+                    return False
+
+        return True
+
+    def add_card_to_cardset(self, card):
+        """Ajoute une carte au cardset"""
+        if not card in self.cardset:
+            self.cardset.append(card)
+        else:
+            raise GridCardAlreadyInCardSet
 
     def copy(self):
         """Copie de la grille actuelle"""

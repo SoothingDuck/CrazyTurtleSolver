@@ -23,10 +23,14 @@ class GridTest(unittest.TestCase):
         self.assertNotEqual(self.grid, other_grid)
         self.assertTrue(self.grid.equals(other_grid))
 
+        self.grid.add_card_to_cardset(Card("TVCRTJTB"))
+        self.assertRaises(GridCardAlreadyInCardSet, self.grid.add_card_to_cardset, Card("TVCRTJTB"))
+
         self.grid.set_card(Card("TVCRTJTB"), 1, 1)
 
         self.assertFalse(self.grid.equals(other_grid))
 
+        self.grid.add_card_to_cardset(Card("TBTVCRTJ"))
         self.grid.set_card(Card("TBTVCRTJ"), 1, 1)
 
         self.assertTrue(self.grid.equals(other_grid))
