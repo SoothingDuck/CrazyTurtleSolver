@@ -66,12 +66,23 @@ class Card:
         return Card(self.card_string[6:8] + self.card_string[0:6])
 
 
-    def __eq__(self, other):
+    def has_same_configuration_as(self, other):
+        """Teste si les cartes sont identiques avec la meme orientation"""
+        return (self.turtle_north.equals(other.turtle_north) and
+                self.turtle_east.equals(other.turtle_east) and
+                self.turtle_south.equals(other.turtle_south) and
+                self.turtle_west.equals(other.turtle_west))
+
+    def equals(self, other):
         """Test d'egalite de deux cartes"""
-        return (self.turtle_north == other.turtle_north and
-                self.turtle_east == other.turtle_east and
-                self.turtle_south == other.turtle_south and
-                self.turtle_west == other.turtle_west)
+        tmp = other.copy()
+
+        for _ in range(4):
+            tmp = tmp.rotate_left()
+            if self.has_same_configuration_as(tmp):
+                return True
+
+        return False
 
     def __str__(self):
         return """

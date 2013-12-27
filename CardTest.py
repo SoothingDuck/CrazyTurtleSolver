@@ -10,6 +10,25 @@ class CardTest(unittest.TestCase):
         self.c3 = Card("CBCBTBTB")
         self.c4 = Card("CBCBTBTB")
 
+
+    def test_copy(self):
+        c1 = Card("CRCVTVTJ")
+        c2 = c1.copy()
+
+        c2 = c2.rotate_left()
+
+        self.assertNotEqual(c1, c2)
+        self.assertTrue(c1.equals(c2))
+
+        c2 = c2.rotate_left()
+        self.assertTrue(c1.equals(c2))
+
+        c2 = c2.rotate_left()
+        self.assertTrue(c1.equals(c2))
+
+        c2 = c2.rotate_left()
+        self.assertTrue(c1.equals(c2))        
+
     def test_init(self):
 
         self.assertRaises(CardException, Card, "CR")
@@ -70,15 +89,16 @@ class CardTest(unittest.TestCase):
         self.assertFalse(self.c1.matches_north(self.c3))
         self.assertFalse(self.c1.matches_south(self.c3))
 
-    def test_equality(self):
-        self.assertEqual(self.c3, self.c4)
+    def test_same_configuration(self):
+        
+        c1 = Card("CRCVTVTJ")
+        c2 = c1.copy()
 
+        self.assertTrue(c1.has_same_configuration_as(c2))
 
-    def test_copy(self):
+        c2 = c2.rotate_left()
 
-        c5 = self.c1.copy()
-
-        self.assertEqual(self.c1, c5)
+        self.assertFalse(c1.has_same_configuration_as(c2))
 
     def test_str(self):
         
