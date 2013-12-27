@@ -12,6 +12,25 @@ class GridTest(unittest.TestCase):
     def test_exception_grid_card(self):
         self.assertRaises(GridCardNotFound, self.grid.set_card, Card("TJTBTVCJ"), 1, 1)
 
+    
+    def test_equals(self):
+
+        self.grid.set_card(Card("TBTVCRTJ"), 1, 1)
+        self.grid.set_card(Card("CBTJCRTJ"), 0, 0)
+
+        other_grid = self.grid.copy()
+
+        self.assertNotEqual(self.grid, other_grid)
+        self.assertTrue(self.grid.equals(other_grid))
+
+        self.grid.set_card(Card("TVCRTJTB"), 1, 1)
+
+        self.assertFalse(self.grid.equals(other_grid))
+
+        self.grid.set_card(Card("TBTVCRTJ"), 1, 1)
+
+        self.assertTrue(self.grid.equals(other_grid))
+
 
     def test_copy(self):
 
@@ -21,12 +40,20 @@ class GridTest(unittest.TestCase):
         other_grid = self.grid.copy()
 
         self.assertNotEqual(self.grid, other_grid)
-        self.assertEquals(self.grid.cardset, other_grid.cardset)
+
+        self.assertNotEqual(self.grid.cardset, other_grid.cardset)
+        self.assertTrue(self.grid.cardset.equals(other_grid.cardset))
+
+        self.assertNotEqual(self.grid.get_card(1,1), other_grid.get_card(1,1))
+        self.assertTrue(self.grid.get_card(1,1).has_same_configuration_as(other_grid.get_card(1,1)))
+
+        self.assertNotEqual(self.grid.get_card(0,0), other_grid.get_card(0,0))
+        self.assertTrue(self.grid.get_card(0,0).has_same_configuration_as(other_grid.get_card(0,0)))
 
         for i in range(3):
             for j in range(3):
-                self.assertEquals(self.grid.matrix[i][j], other_grid.matrix[i][j])
-                raise
+                self.assertNotEqual(self.grid.matrix[i][j], other_grid.matrix[i][j])
+                self.assertTrue(self.grid.matrix[i][j].equals(other_grid.matrix[i][j]))
 
 
     def test_configuration(self):
@@ -37,7 +64,7 @@ class GridTest(unittest.TestCase):
         self.assertEqual(self.grid.number_of_cards_left(), 7)
 
         a = self.grid.matrix[0][1].get_possible_card_configuration()
-        self.assertEqual(a[0], Card("TRCJCRTV"))
+        self.assertTrue(a[0].equals(Card("TRCJCRTV")))
 
     def test_init(self):
 

@@ -17,6 +17,19 @@ class Place:
 
         return p
 
+
+    def equals(self, other):
+        if self.x != other.x:
+            return False
+
+        if self.y != other.y:
+            return False
+
+        if self.card is None:
+            return (other.card is None)
+        else:
+            return (self.card.has_same_configuration_as(other.card))
+
     def set_card(self, card):
         self.card = card
 
