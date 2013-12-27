@@ -20,10 +20,13 @@ class TurtlePart:
         """Affichage de la partie de la tortue"""
         return self.part_name
 
-    def __eq__(self, other):
+    def equals(self, other):
         """Test d'egalite avec une autre partie de tortue"""
         return self.part_name == other.part_name
 
-    def __ne__(self, other):
-        """Test d'inegalite avec une autre partie de tortue"""
-        return self.part_name != other.part_name
+    def copy(self):
+        """Retourne une copie de TurtlePart"""
+        return TurtlePart(self.part_name)
+
+    def matches(self, other):
+        return (self.part_name != other.part_name)
