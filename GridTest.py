@@ -70,6 +70,18 @@ class GridTest(unittest.TestCase):
         a = self.grid.matrix[0][1].get_possible_card_configurations()
         self.assertTrue(a[0].equals(Card("TRCJCRTV")))
 
+
+    def test_exist_valid_card_for_all_places(self):
+        
+        self.grid.set_card(Card("TRTVCBCJ"), 0, 0)
+        self.grid.set_card(Card("TBTRCBCV"), 0, 1)
+        self.grid.set_card(Card("TBCVCJCV"), 0, 2)
+        self.grid.set_card(Card("TJTBTVCR"), 1, 1)
+
+        self.assertFalse(self.grid.exist_valid_card_for_all_next_places())
+
+        raise
+
     def test_init(self):
 
         self.assertTrue(isinstance(self.grid, Grid))
@@ -123,7 +135,18 @@ class GridTest(unittest.TestCase):
     def test_next_step(self):
         
         cardset = self.grid.get_cardset()
+        first_card = cardset[0]
 
+        self.grid.set_card(first_card, 1, 1)
+
+        grid_set = self.grid.next_step()
+
+        for grid in grid_set:
+            self.assertEquals(grid.number_of_cards_left(), 7)
+
+        result = []
+        for grid in grid_set:
+            result += grid.next_step()
 
 if __name__ == "__main__":
     unittest.main()

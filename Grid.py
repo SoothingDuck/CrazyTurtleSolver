@@ -129,6 +129,20 @@ class Grid:
 
         return True
 
+    def next_step(self):
+        """Renvoie l'ensemble des grilles possibles au prochain coup"""
+        result = []
+
+        next_places = self.get_new_places_for_cards()
+
+        for place in next_places:
+            card_list = place.get_possible_card_configurations()
+            
+            for card in card_list:
+                result.append(place.get_grid_for_card_configuration(card))
+        
+        return result
+
     def get_cardset(self):
         """Renvoie le cardset de la grille"""
         return self.cardset

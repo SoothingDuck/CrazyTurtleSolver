@@ -13,14 +13,17 @@ if __name__ == "__main__":
 
     input = [g]
 
-    for i in range(5):
+    for i in range(3):
         output = []
 
-        print "Iteration : %d, nombre grilles = %d" % (i+1, len(input))
+        print "Debut iteration : %d, nombre grilles input = %d" % (i+1, len(input))
 
         for grid in input:
             output += grid.next_step()
 
         input = output
 
+        print "Fin   iteration : %d, nombre grilles output = %d" % (i+1, len(input))
 
+        print output[0]
+        print output[0].get_cardset()
