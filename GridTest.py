@@ -67,7 +67,7 @@ class GridTest(unittest.TestCase):
 
         self.assertEqual(self.grid.number_of_cards_left(), 7)
 
-        a = self.grid.matrix[0][1].get_possible_card_configuration()
+        a = self.grid.matrix[0][1].get_possible_card_configurations()
         self.assertTrue(a[0].equals(Card("TRCJCRTV")))
 
     def test_init(self):
@@ -88,7 +88,7 @@ class GridTest(unittest.TestCase):
 
         self.assertTrue(isinstance(place, Place))
 
-        card_configuration_list = place.get_possible_card_configuration()
+        card_configuration_list = place.get_possible_card_configurations()
 
         self.assertEqual(len(card_configuration_list), 5)
 
@@ -96,8 +96,33 @@ class GridTest(unittest.TestCase):
 
         next_grid = place.get_grid_for_card_configuration(card_configuration_list[0])
         
-        self.assertEqual(self.next_grid.number_of_cards_left(), 7)
+        self.assertEqual(next_grid.number_of_cards_left(), 7)
 
+        self.assertNotEqual(self.grid, next_grid)
+
+        self.assertTrue(next_grid.get_card(1,1).equals(Card("TJTBTVCR")))
+        self.assertTrue(next_grid.get_card(0,1).equals(Card("TBTRCBCV")))
+
+        next_new_places = next_grid.get_new_places_for_cards()
+
+        self.assertEqual(len(next_new_places), 5)
+
+        place = next_grid.get_place(x=1,y=0)
+
+        card_list = place.get_possible_card_configurations()
+
+        card = card_list[0]
+
+        next_next_grid = place.get_grid_for_card_configuration(card)
+
+        place = next_next_grid.get_place(0,0)
+
+        card_list = place.get_possible_card_configurations()
+
+
+    def test_next_step(self):
+        
+        cardset = self.grid.get_cardset()
 
 
 if __name__ == "__main__":

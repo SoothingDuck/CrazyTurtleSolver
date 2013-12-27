@@ -10,6 +10,13 @@ class Place:
         self.card = None
 
 
+    def get_grid_for_card_configuration(self, card):
+        grid = self.grid.copy()
+
+        grid.set_card(card, self.x, self.y)
+
+        return grid
+
     def copy(self, other_grid):
         p = Place(other_grid, self.x, self.y)
         if not self.card is None:
@@ -39,6 +46,7 @@ class Place:
     def get_card(self):
         return self.card
 
+        
     def has_adjacent_card(self):
 
         if self.x > 0 and self.grid.matrix[self.x - 1][self.y].has_card():
@@ -81,7 +89,7 @@ class Place:
         return True
 
 
-    def get_possible_card_configuration(self):
+    def get_possible_card_configurations(self):
         
         result = []
 
@@ -121,6 +129,10 @@ class Grid:
 
         return True
 
+    def get_cardset(self):
+        """Renvoie le cardset de la grille"""
+        return self.cardset
+
     def add_card_to_cardset(self, card):
         """Ajoute une carte au cardset"""
         if not card in self.cardset:
@@ -141,6 +153,11 @@ class Grid:
                 g.matrix[i][j] = self.matrix[i][j].copy(g)
 
         return g
+
+
+    def get_place(self, x, y):
+        """Recupere un emplacement de la matrice"""
+        return self.matrix[x][y]
 
     def init_crazy_turtle_game(self):
         
@@ -185,6 +202,34 @@ class Grid:
 
         return tmp
 
+    def __str__(self):
+        tmp = ""
+        for j in range(3):
+            tmp += "******************************\n"
+            for i in range(3):
+                if not self.matrix[i][j].card is None:
+                    tmp += "*   %s   *" % self.matrix[i][j].card.turtle_north
+                else:
+                    tmp += "*        *"
+                if i == 2:
+                    tmp += "\n"
 
+            for i in range(3):
+                if not self.matrix[i][j].card is None:
+                    tmp += "* %s  %s *" % (self.matrix[i][j].card.turtle_west, self.matrix[i][j].card.turtle_east)
+                else:
+                    tmp += "*        *"
+                if i == 2:
+                    tmp += "\n"
+
+            for i in range(3):
+                if not self.matrix[i][j].card is None:
+                    tmp += "*   %s   *" % self.matrix[i][j].card.turtle_south
+                else:
+                    tmp += "*        *"
+
+            tmp += "\n******************************\n"
+
+        return tmp
 
         
