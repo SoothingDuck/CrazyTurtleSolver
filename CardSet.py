@@ -6,10 +6,8 @@ class CardSet(list):
         """Surchage in pour CardSet"""
         seq = list(self)
 
-        tmp = obj
-        for _ in range(4):
-            tmp = tmp.rotate_right()
-            if tmp in seq:
+        for card in seq:
+            if obj.equals(card):
                 return True
             
         return False
@@ -27,12 +25,13 @@ class CardSet(list):
         self.append(Card("CVCBTVCB"))
 
     def copy(self):
-        
-        p = CardSet()
-        for x in self:
-            p.append(x)
+        """Cree une copie du CardSet"""
+        tmp = CardSet()
 
-        return p
+        for card in self:
+            tmp.append(card.copy())
+
+        return tmp
 
     def __str__(self):
         return "".join([str(x) for x in self])
@@ -41,11 +40,18 @@ class CardSet(list):
         
         seq = list(self)
 
-        tmp = card
-        for _ in range(4):
-            tmp = tmp.rotate_right()
-            for i, t in enumerate(seq):
-                if t == tmp:
-                    del self[i]
-                    return None
-            
+        for i, obj in enumerate(seq):
+            if obj.equals(card):
+                del self[i]
+                return None
+
+    def equals(self, other):
+        """S'assure que 2 cardSet sont identique"""
+        if len(self) != len(other):
+            return False
+
+        for card in self:
+            if not card in other:
+                return False
+
+        return True

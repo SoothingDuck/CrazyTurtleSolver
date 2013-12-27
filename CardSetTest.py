@@ -8,6 +8,29 @@ class CardSetTest(unittest.TestCase):
         self.a = CardSet()
         self.a.init_crazy_turle_cardset()
 
+    def test_copy(self):
+
+        a = CardSet()
+        a.init_crazy_turle_cardset()
+
+        b = a.copy()
+
+        self.assertFalse(a == b)
+
+        self.assertEqual(len(a), len(b))
+        
+        for card in b:
+            self.assertTrue(card in a)
+
+        a.delete_card(Card("TVCRTJTB"))
+
+        self.assertFalse(a.equals(b))
+
+        b.delete_card(Card("TVCRTJTB"))
+
+        self.assertTrue(a.equals(b))
+
+
     def test_init(self):
 
         self.assertTrue(Card("TVCRTJTB") in self.a)
