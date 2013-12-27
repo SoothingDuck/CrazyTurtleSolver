@@ -10,6 +10,8 @@ class Color:
         J == Jaune
         B == Bleu
         """
+        self.letter = letter
+
         if letter == "R":
             self.color = "R"
         elif letter == "V":
@@ -25,11 +27,11 @@ class Color:
         """Affichage de la color"""
         return self.color
 
-    def __eq__(self, other):
+    def equals(self, other):
         """Surcharge de =="""
         return self.color == other.color
 
-    def __ne__(self, other):
-        """Surcharge de !="""
-        return self.color != other.color
-        
+
+    def copy(self):
+        """Retourne une copie de la couleur"""
+        return Color(self.letter)

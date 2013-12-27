@@ -27,15 +27,16 @@ class ColorTest(unittest.TestCase):
 
     def test_equality(self):
         b1 = Color("B")
-        b2 = Color("B")
+        b2 = b1.copy()
         
-        self.assertEqual(b1, b2)
+        self.assertNotEqual(b1, b2)
+        self.assertTrue(b1.equals(b2))
         
     def test_inequality(self):
         b = Color("B")
         v = Color("V")
 
-        self.assertNotEqual(b, v)
+        self.assertTrue(not b.equals(v))
 
 if __name__ == "__main__":
     unittest.main()
