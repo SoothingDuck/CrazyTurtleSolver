@@ -33,7 +33,7 @@ class Color:
 
     def copy(self):
         """Retourne une copie de la couleur"""
-        return Color(self.letter)
+        return self
 
     def matches(self, other):
         """Regarde si 2 couleurs matchent"""

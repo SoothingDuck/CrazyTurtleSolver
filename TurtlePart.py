@@ -26,7 +26,7 @@ class TurtlePart:
 
     def copy(self):
         """Retourne une copie de TurtlePart"""
-        return TurtlePart(self.part_name)
+        return self
 
     def matches(self, other):
         return (self.part_name != other.part_name)

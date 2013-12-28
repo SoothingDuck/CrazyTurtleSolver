@@ -1,12 +1,28 @@
 
-import Color
-import TurtlePart
+from Color import *
+from TurtlePart import *
 
 class TurtleException(Exception):
     pass
 
 class Turtle:
     
+    ROUGE = Color("R")
+    BLEU = Color("B")
+    JAUNE = Color("J")
+    VERT = Color("V")
+
+    CORPS = TurtlePart("C")
+    TETE = TurtlePart("T")
+
+    ASSOC_PART = { "C" : CORPS, "T" : TETE }
+    ASSOC_COLOR = {
+        "R" : ROUGE,
+        "B" : BLEU,
+        "J" : JAUNE,
+        "V" : VERT
+    }
+
     def __init__(self, init_string):
         """Initialisation
 
@@ -21,11 +37,17 @@ class Turtle:
 
         turtle_part_string = init_string[0]
 
-        self.part = TurtlePart.TurtlePart(turtle_part_string)
+        try:
+            self.part = Turtle.ASSOC_PART[turtle_part_string]
+        except KeyError:
+            raise TurtlePartException
 
         color_string = init_string[1]
 
-        self.color = Color.Color(color_string)
+        try:
+            self.color = Turtle.ASSOC_COLOR[color_string]
+        except KeyError:
+            raise ColorException
         
     def equals(self, other):
         """Test d'egalite entre tortues"""
@@ -33,7 +55,7 @@ class Turtle:
 
     def copy(self):
         """Retourne une copie de la tortue"""
-        return Turtle(self.init_string)
+        return self
 
 
     def __str__(self):
