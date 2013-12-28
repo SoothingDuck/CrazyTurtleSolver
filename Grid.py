@@ -168,6 +168,18 @@ class Grid:
 
         return g
 
+    def exist_valid_card_for_all_next_places(self):
+        
+        next_places = self.get_new_places_for_cards()
+
+        for place in next_places:
+            next_cards = place.get_possible_card_configurations()
+
+            if len(next_cards) == 0:
+                return False
+
+        return True
+
 
     def get_place(self, x, y):
         """Recupere un emplacement de la matrice"""

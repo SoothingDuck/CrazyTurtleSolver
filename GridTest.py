@@ -80,8 +80,6 @@ class GridTest(unittest.TestCase):
 
         self.assertFalse(self.grid.exist_valid_card_for_all_next_places())
 
-        raise
-
     def test_init(self):
 
         self.assertTrue(isinstance(self.grid, Grid))
