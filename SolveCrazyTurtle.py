@@ -50,14 +50,12 @@ if __name__ == "__main__":
     all_card = g.get_cardset()
 
 
-    for card in all_card:
+    for i, card in enumerate(all_card):
         g = Grid()
         g.init_crazy_turtle_game()
 
         result = iter_for_card(g, card)
 
         if len(result) > 0:
-            for grid in result:
-                print grid
-
+            print result[0]
             sys.exit(0)
