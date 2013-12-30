@@ -6,12 +6,12 @@ class CardSetTest(unittest.TestCase):
 
     def setUp(self):
         self.a = CardSet()
-        self.a.init_crazy_turle_cardset()
+        self.a.init_crazy_turle_cardset_internet()
 
     def test_copy(self):
 
         a = CardSet()
-        a.init_crazy_turle_cardset()
+        a.init_crazy_turle_cardset_internet()
 
         b = a.copy()
 

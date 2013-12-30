@@ -13,6 +13,16 @@ class GridTest(unittest.TestCase):
         self.assertRaises(GridCardNotFound, self.grid.set_card, Card("TJTBTVCJ"), 1, 1)
 
     
+    def test_change_cardset(self):
+
+        c = CardSet()
+        c.init_crazy_turtle_cardset_home()
+
+        self.grid.set_cardset(c)
+
+        self.assertTrue(Card("TRTBCVCJ") in self.grid.get_cardset())
+        self.assertTrue(Card("CBTVTJCR") in self.grid.get_cardset())
+
     def test_equals(self):
 
         self.grid.set_card(Card("TBTVCRTJ"), 1, 1)

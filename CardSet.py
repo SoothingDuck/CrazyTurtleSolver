@@ -24,7 +24,7 @@ class CardSet(list):
         self.append(Card("TJCJCRTB"))
         self.append(Card("CVCBTVCB"))
 
-    def init_crazy_turle_cardset_home(self):
+    def init_crazy_turtle_cardset_home(self):
         """Init avec les cartes presentes sur le Crazy Turtle Solver d'internet"""
         self.append(Card("TRTBCVCJ"))
         self.append(Card("CJTVTRCB"))

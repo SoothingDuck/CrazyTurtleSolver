@@ -1,5 +1,6 @@
 import sys
 from Grid import Grid
+from CardSet import CardSet
 
 def iter_for_card(grid, card, verbose=True):
     
@@ -47,12 +48,20 @@ if __name__ == "__main__":
     g = Grid()
     g.init_crazy_turtle_game()
 
+    c = CardSet()
+    c.init_crazy_turtle_cardset_home()
+    g.set_cardset(c)
+
     all_card = g.get_cardset()
 
 
     for i, card in enumerate(all_card):
         g = Grid()
         g.init_crazy_turtle_game()
+
+        c = CardSet()
+        c.init_crazy_turtle_cardset_home()
+        g.set_cardset(c)
 
         result = iter_for_card(g, card)
 

@@ -147,6 +147,10 @@ class Grid:
         """Renvoie le cardset de la grille"""
         return self.cardset
 
+    def set_cardset(self, cardset):
+        """Change le cardset de la grille"""
+        self.cardset = cardset
+
     def add_card_to_cardset(self, card):
         """Ajoute une carte au cardset"""
         if not card in self.cardset:
@@ -187,7 +191,7 @@ class Grid:
 
     def init_crazy_turtle_game(self):
         
-        self.cardset.init_crazy_turle_cardset()
+        self.cardset.init_crazy_turle_cardset_internet()
 
         for i in range(3):
             self.matrix.append([None, None, None])
