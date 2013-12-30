@@ -38,3 +38,6 @@ nosetests.xml
 # Vim backup files
 *~
 
+# Rope
+.ropeproject
+

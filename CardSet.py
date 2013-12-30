@@ -12,7 +12,7 @@ class CardSet(list):
             
         return False
 
-    def init_crazy_turle_cardset(self):
+    def init_crazy_turle_cardset_internet(self):
         """Init avec les cartes presentes sur le Crazy Turtle Solver d'internet"""
         self.append(Card("TJTBTVCR"))
         self.append(Card("TBTRCBCV"))
@@ -23,6 +23,18 @@ class CardSet(list):
         self.append(Card("TJCBTJCR"))
         self.append(Card("TJCJCRTB"))
         self.append(Card("CVCBTVCB"))
+
+    def init_crazy_turle_cardset_home(self):
+        """Init avec les cartes presentes sur le Crazy Turtle Solver d'internet"""
+        self.append(Card("TRTBCVCJ"))
+        self.append(Card("CJTVTRCB"))
+        self.append(Card("CBTRTJCV"))
+        self.append(Card("CJTRTBCR"))
+        self.append(Card("CBTVTJCV"))
+        self.append(Card("CBTVTJCR"))
+        self.append(Card("TVTBCJCR"))
+        self.append(Card("CBTRTVCJ"))
+        self.append(Card("CBTVTJCR"))
 
     def copy(self):
         """Cree une copie du CardSet"""
