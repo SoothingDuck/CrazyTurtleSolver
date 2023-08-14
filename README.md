@@ -1,4 +1,4 @@
-CrazzyTurtleSolver
+CrazyTurtleSolver
 ==================
 
 Python Solver for the Crazy Turtle Game 
